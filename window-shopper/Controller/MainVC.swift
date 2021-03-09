@@ -9,33 +9,31 @@ import UIKit
 
 class MainVC: UIViewController {
     
-
     @IBOutlet weak var hourlyWageTF: CurrencyTxtFld!
     @IBOutlet weak var itemPriceTF: CurrencyTxtFld!
+    
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let calcBtn = UIButton(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 60))
         
+        calcBtn.backgroundColor = #colorLiteral(red: 1, green: 0.6123608351, blue: 0, alpha: 1)
+        calcBtn.setTitle("Calculate", for: .normal)
+        calcBtn.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+        calcBtn.addTarget(self,
+                          action: #selector(MainVC.calculate),
+                          for: .touchUpInside)
         
-        hourlyWageTF.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.25)
-        hourlyWageTF.placeholder = "Your hourly wage"
-        hourlyWageTF.layer.cornerRadius = 5.0
-        hourlyWageTF.textAlignment = .center
-
+        hourlyWageTF.inputAccessoryView = calcBtn
+        itemPriceTF.inputAccessoryView = calcBtn
         
-        itemPriceTF.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.25)
-        itemPriceTF.placeholder = "Item price"
-        itemPriceTF.layer.cornerRadius = 5.0
-        itemPriceTF.textAlignment = .center
-        
-        hourlyWageTF.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        itemPriceTF.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        
-        let placeH = NSAttributedString(string: hourlyWageTF.placeholder!, attributes: [.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)])
-        
-        
+    }
+    
+    @objc func calculate() {
+        print("hey yes!")
     }
 
 
